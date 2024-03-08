@@ -217,7 +217,7 @@ e952b772-80a5-41e9-b728-6bc4dc5c21b4
 ## 0x05 Authors
 <details>
     <summary>KEHINDE ADEOLA DADA</summary>
-    <summary>OLAYINKA AHMED SODIQ</summary>
+    <summary>AHMED OLAYINKA SODIQ</summary>
 </details>
 
 ## How to add Author file
