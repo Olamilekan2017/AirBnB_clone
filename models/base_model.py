@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """BaseModel class for the AirBnB project"""
-from uuid import uuid4
-import datetime
+import uuid
+from datetime import datetime
 import models
 
 
@@ -22,8 +22,8 @@ class BaseModel:
                     self.__dict__[key] = datetime.strptime(val, datefmt)
                 else:
                     self.__dict__[key] = val
-            else:
-                models.storage.new(self)
+        else:
+            models.storage.new(self)
 
     def __str__(self):
         """Gets and returns string representation of BaseModel"""

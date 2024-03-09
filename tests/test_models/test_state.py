@@ -3,7 +3,7 @@
 import time
 import models
 import unittest
-import datetime from datetime
+from datetime import datetime
 from os import rename, remove
 from models.state import State
 
@@ -182,7 +182,7 @@ class TestStateto_dict(unittest.TestCase):
         exptdict = {'id': '433810', '__class__': 'State',
                     'created_at': currentdt.isoformat(),
                     'updated_at': currentdt.isoformat()}
-        self.assertDictEqual(stt.to_dict(), expdict)
+        self.assertDictEqual(stt.to_dict(), exptdict)
 
     def testStateto_dictand__dict__(self):
         """Test the output of State 'to_dict' to __dict__"""

@@ -4,7 +4,7 @@ import time
 import models
 import unittest
 from os import rename, remove
-import datetime from datetime
+from datetime import datetime
 from models.base_model import BaseModel
 
 

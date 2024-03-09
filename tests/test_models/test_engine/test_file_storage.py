@@ -2,7 +2,7 @@
 """Unittest for file_storage.py has been established"""
 import unittest
 import models
-import datetime from datetime
+from datetime import datetime
 from os import rename, remove
 
 

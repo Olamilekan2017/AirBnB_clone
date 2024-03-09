@@ -4,7 +4,7 @@ import time
 import models
 import unittest
 from os import rename, remove
-import datetime from datetime
+from datetime import datetime
 from models.review import Review
 
 
@@ -194,7 +194,7 @@ class TestReviewto_dict(unittest.TestCase):
         exptdict = {'id': '433810', '__class__': 'Review',
                     'created_at': currentdt.isoformat(),
                     'updated_at': currentdt.isoformat()}
-        self.assertDictEqual(revw.to_dict(), expdict)
+        self.assertDictEqual(revw.to_dict(), exptdict)
 
     def testReviewto_dictand__dict__(self):
         """Test the output of Review 'to_dict' to __dict__"""

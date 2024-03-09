@@ -3,9 +3,9 @@
 import time
 import models
 import unittest
-import datetime from datetime
+from datetime import datetime
 from os import rename, remove
-import Place from models.place
+from models.place import Place
 
 
 class TestPlaceinstance(unittest.TestCase):

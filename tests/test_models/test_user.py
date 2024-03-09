@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-"""Unittest for user.py has been established"""
+"""Unittest for usr.py has been established"""
 import time
 import models
 import unittest
 from os import rename, remove
-import datetime from datetime
+from datetime import datetime
 from models.user import User
 
 
@@ -49,36 +49,36 @@ class TestUserinstance(unittest.TestCase):
 
     def testUsertwoids(self):
         """Test that two instances User have unique 'ids'"""
-        user1 = User()
-        user2 = User()
-        self.assertNotEqual(user1.id, user2.id)
+        usr1 = User()
+        usr2 = User()
+        self.assertNotEqual(usr1.id, usr2.id)
 
     def testUsertwocreated_at(self):
         """Test the 'created_at' timestamp of two instances User"""
-        user1 = User()
+        usr1 = User()
         time.sleep(0.07)
-        user2 = User()
-        self.assertLess(user1.created_at, user2.created_at)
+        usr2 = User()
+        self.assertLess(usr1.created_at, usr2.created_at)
 
     def testUsertwoupdated_at(self):
         """Test the 'updated_at' timestamp of two instances User"""
-        user1 = User()
+        usr1 = User()
         time.sleep(0.07)
-        user2 = User()
-        self.assertLess(user1.updated_at, user2.updated_at)
+        usr2 = User()
+        self.assertLess(usr1.updated_at, usr2.updated_at)
 
     def testUserstrrep(self):
         """Test the string representation of a User instance"""
         currentdt = datetime.today()
         daterepr = repr(currentdt)
-        user = User()
-        user.id = "28557"
-        user.created_at = user.updated_at = currentdt
-        userstr = user.__str__()
-        self.assertIn("[User] (28557)", userstr)
-        self.assertIn("'id': '28557'", userstr)
-        self.assertIn("'created_at': " + daterepr, userstr)
-        self.assertIn("'updated_at': " + daterepr, userstr)
+        usr = User()
+        usr.id = "28557"
+        usr.created_at = usr.updated_at = currentdt
+        usrstr = usr.__str__()
+        self.assertIn("[User] (28557)", usrstr)
+        self.assertIn("'id': '28557'", usrstr)
+        self.assertIn("'created_at': " + daterepr, usrstr)
+        self.assertIn("'updated_at': " + daterepr, usrstr)
 
     def testUserunusedargs(self):
         """Test that unused arguments has no impact BaseModel instances"""
@@ -88,10 +88,10 @@ class TestUserinstance(unittest.TestCase):
         """Test instantiation User with specified keywordargs(kwargs)"""
         currentdt = datetime.today()
         dateiso = currentdt.isoformat()
-        user = User(id="433", created_at=dateiso, updated_at=dateiso)
-        self.assertEqual(user.id, "433")
-        self.assertEqual(user.created_at, currentdt)
-        self.assertEqual(user.updated_at, currentdt)
+        usr = User(id="433", created_at=dateiso, updated_at=dateiso)
+        self.assertEqual(usr.id, "433")
+        self.assertEqual(usr.created_at, currentdt)
+        self.assertEqual(usr.updated_at, currentdt)
 
     def testUserinstanceNonekwargs(self):
         """Test instantiation User with None as kwargs"""
@@ -124,23 +124,23 @@ class TestUsersave(unittest.TestCase):
 
     def testUseronesave(self):
         """Test that User 'save' call updates 'updated_at' timestamp"""
-        user = User()
+        usr = User()
         time.sleep(0.08)
-        frstupdated_at = user.updated_at
-        user.save()
-        self.assertLess(frstupdated_at, user.updated_at)
+        frstupdated_at = usr.updated_at
+        usr.save()
+        self.assertLess(frstupdated_at, usr.updated_at)
 
     def testUsertwosaves(self):
         """Test two User 'save' calls updates 'updated_at' timestamps"""
-        user = User()
+        usr = User()
         time.sleep(0.06)
-        frstupdated_at = user.updated_at
-        user.save()
-        secndupdated_at = user.updated_at
+        frstupdated_at = usr.updated_at
+        usr.save()
+        secndupdated_at = usr.updated_at
         self.assertLess(frstupdated_at, secndupdated_at)
         time.sleep(0.06)
-        user.save()
-        self.assertLess(secndupdated_at, user.updated_at)
+        usr.save()
+        self.assertLess(secndupdated_at, usr.updated_at)
 
     def testUsersaveargs(self):
         """Test 'save' method of User call with arguments"""
@@ -148,11 +148,11 @@ class TestUsersave(unittest.TestCase):
 
     def testUsersaveJSONfile(self):
         """Test 'save' method of User updates the corresponding JSON file"""
-        user = User()
-        user.save()
-        userid = "User." + user.id
+        usr = User()
+        usr.save()
+        usrid = "User." + usr.id
         with open("file.json", "r") as fl:
-            self.assertIn(userid, fl.read())
+            self.assertIn(usrid, fl.read())
 
 
 class TestUserto_dict(unittest.TestCase):
@@ -171,28 +171,28 @@ class TestUserto_dict(unittest.TestCase):
 
     def testBasemodelto_dictaddattr(self):
         """Test if dict User 'to_dict' has additional attributes"""
-        user = User()
-        user.name = "Kehinde_and_Ahmed"
-        user.number = 122
-        self.assertIn("name", user.to_dict())
-        self.assertIn("number", user.to_dict())
+        usr = User()
+        usr.name = "Kehinde_and_Ahmed"
+        usr.number = 122
+        self.assertIn("name", usr.to_dict())
+        self.assertIn("number", usr.to_dict())
 
     def testUserto_dictdatetimeattr(self):
         """Test if dict User 'to_dict' datetime attr are string reps"""
-        userdict = User().to_dict()
-        self.assertEqual(str, type(userdict["created_at"]))
-        self.assertEqual(str, type(userdict["updated_at"]))
+        usrdict = User().to_dict()
+        self.assertEqual(str, type(usrdict["created_at"]))
+        self.assertEqual(str, type(usrdict["updated_at"]))
 
     def testUserto_dictoutput(self):
         """Test if output User 'to_dict' matches the expected dict"""
         currentdt = datetime.today()
-        user = User()
-        user.id = "433810"
-        user.created_at = user.updated_at = currentdt
+        usr = User()
+        usr.id = "433810"
+        usr.created_at = usr.updated_at = currentdt
         exptdict = {'id': '433810', '__class__': 'User',
                     'created_at': currentdt.isoformat(),
                     'updated_at': currentdt.isoformat()}
-        self.assertDictEqual(user.to_dict(), expdict)
+        self.assertDictEqual(usr.to_dict(), exptdict)
 
     def testUserto_dictand__dict__(self):
         """Test the output of User 'to_dict' to __dict__"""

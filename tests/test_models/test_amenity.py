@@ -4,7 +4,7 @@ import time
 import models
 import unittest
 from os import rename, remove
-import datetime from datetime
+from datetime import datetime
 from models.amenity import Amenity
 
 
@@ -63,8 +63,8 @@ class TestAmenityinstance(unittest.TestCase):
         daterepr = repr(currentdt)
         amnty = Amenity()
         amnty.id = "28557"
-        amnty.created_at = amty.updated_at = currentdt
-        amntystr = amty.__str__()
+        amnty.created_at = amnty.updated_at = currentdt
+        amntystr = amnty.__str__()
         self.assertIn("[Amenity] (28557)", amntystr)
         self.assertIn("'id': '28557'", amntystr)
         self.assertIn("'created_at': " + daterepr, amntystr)
@@ -125,7 +125,7 @@ class TestAmenitysave(unittest.TestCase):
         amnty = Amenity()
         time.sleep(0.06)
         frstupdated_at = amnty.updated_at
-        amty.save()
+        amnty.save()
         secndupdated_at = amnty.updated_at
         self.assertLess(frstupdated_at, secndupdated_at)
         time.sleep(0.06)
@@ -182,7 +182,7 @@ class TestAmenityto_dict(unittest.TestCase):
         exptdict = {'id': '433810', '__class__': 'Amenity',
                     'created_at': currentdt.isoformat(),
                     'updated_at': currentdt.isoformat()}
-        self.assertDictEqual(amnty.to_dict(), expdict)
+        self.assertDictEqual(amnty.to_dict(), exptdict)
 
     def testAmenityto_dictand__dict__(self):
         """Test the output of Amenity 'to_dict' to __dict__"""

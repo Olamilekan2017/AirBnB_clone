@@ -15,7 +15,7 @@ from models.base_model import BaseModel
 
 class HBNBCommand(cmd.Cmd):
     """HBnB project console is represented"""
-    prompt = "(hbnb)"
+    prompt = "(hbnb) "
     classes = \
         {"City", "User", "State", "Place", "Review", "Amenity", "BaseModel"}
 
@@ -32,7 +32,7 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, args):
-        """Instantiate new class instance save it display its Id"""
+        """Instantiate new class instance save it display its id"""
         classargs = parse(args)
         if len(classargs) == 0:
             print("** class name missing **")
@@ -149,7 +149,7 @@ class HBNBCommand(cmd.Cmd):
             "count": self.do_count,
             "destroy": self.do_destroy
         }
-        dotmt = re.search(r"\.", args)
+        dotmt = search(r"\.", args)
         if dotmt is not None:
             classargs = [args[:dotmt.span()[0]], args[dotmt.span()[1]:]]
             dotmt = search(r"\((.*?)\)", classargs[1])
@@ -180,5 +180,6 @@ def parse(args):
         reslist.append(curlybr.group())
         return reslist
 
-    if __name__ == '__main__':
-        HBNBCommand().cmdloop()
+
+if __name__ == '__main__':
+    HBNBCommand().cmdloop()

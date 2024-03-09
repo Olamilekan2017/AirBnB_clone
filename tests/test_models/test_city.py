@@ -3,8 +3,8 @@
 import time
 import models
 import unittest
-import City from models.city
-import datetime from datetime
+from models.city import City
+from datetime import datetime
 from os import rename, remove
 
 
@@ -136,7 +136,7 @@ class TestCitysave(unittest.TestCase):
         self.assertLess(frstupdated_at, secndupdated_at)
         time.sleep(0.06)
         city.save()
-        self.assertLess(scdupdated_at, city.updated_at)
+        self.assertLess(secndupdated_at, city.updated_at)
 
     def testCitysaveargs(self):
         """Test 'save' method of City call with arguments"""
